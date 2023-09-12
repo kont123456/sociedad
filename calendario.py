@@ -10,6 +10,8 @@ locale.setlocale(locale.LC_ALL, 'es_PE.UTF-8')
 
 #crear la aplicacion dash
 app = dash.Dash(__name__)
+server=app.server
+
 # mportar o transformar la Data
 df=pd.read_excel("C:\\Users\\luis\\Desktop\\saldos bancos.xlsx",sheet_name="Saldo de Moneda ",header=4)
 df.iloc[0]=df.iloc[0].fillna("")
