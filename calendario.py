@@ -6,7 +6,7 @@ from dash.dependencies import Output,Input
 import locale
 
 
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
+#locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
 
 
 #crear la aplicacion dash
@@ -26,8 +26,26 @@ df2.drop(columns=["descripcion"],inplace=True)
 df2["fecha"]=df2["fecha"].replace("",pd.NA)
 df2["fecha"].fillna(method="ffill",inplace=True)
 df2["fecha"] = pd.to_datetime(df2["fecha"], format="%d/%m/%Y")
-df2["Mes"]=df2["fecha"].dt.month_name(locale="es-ES.utf8")
+#df2["Mes"]=df2["fecha"].dt.month_name(locale="es-ES.utf8")
 
+# Crear un diccionario de mapeo de número de mes a nombre de mes en español
+nombre_meses = {
+    1: 'Enero',
+    2: 'Febrero',
+    3: 'Marzo',
+    4: 'Abril',
+    5: 'Mayo',
+    6: 'Junio',
+    7: 'Julio',
+    8: 'Agosto',
+    9: 'Septiembre',
+    10: 'Octubre',
+    11: 'Noviembre',
+    12: 'Diciembre'
+}
+
+# Aplicar el mapeo al DataFrame
+df2['Mes'] = df2['fecha'].dt.month.map(nombre_meses)
 
 app.layout=html.Div([
            html.H1("Reporte de Saldos Bancos"),
