@@ -14,7 +14,14 @@ app = dash.Dash(__name__)
 server=app.server
 
 # mportar o transformar la Data
-df=pd.read_excel("C:\\Users\\luis\\Desktop\\saldos bancos.xlsx",sheet_name="Saldo de Moneda ",header=4)
+import pandas as pd
+
+url = 'https://raw.githubusercontent.com/kont123456/sociedad/main/saldos%20bancos.xlsx'
+df = pd.read_excel(url, sheet_name="Saldo de Moneda ", header=4)
+
+
+
+#df=pd.read_excel("C:\\Users\\luis\\Desktop\\saldos bancos.xlsx",sheet_name="Saldo de Moneda ",header=4)
 df.iloc[0]=df.iloc[0].fillna("")
 df.iloc[1]=df.iloc[1].fillna("")
 df.columns=df.iloc[0].astype(str)+" "+df.iloc[1].astype(str)
