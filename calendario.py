@@ -6,7 +6,8 @@ from dash.dependencies import Output,Input
 import locale
 
 
-locale.setlocale(locale.LC_ALL, 'es_PE.UTF-8')
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
+
 
 #crear la aplicacion dash
 app = dash.Dash(__name__)
